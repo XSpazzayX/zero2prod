@@ -54,7 +54,7 @@ mod tests {
         assert_err!(SubscriberEmail::parse(email));
     }
 
-    #[quickcheck_macros::quickcheck]    
+    #[quickcheck_macros::quickcheck]
     fn valid_emails_are_parsed_sucessfully(valid_email: ValidEmailFixture) {
         SubscriberEmail::parse(valid_email.0).is_ok();
     }
