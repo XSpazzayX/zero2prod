@@ -1,9 +1,9 @@
-use crate::configuration::{get_configuration, DatabaseSettings, Settings};
+use crate::configuration::{DatabaseSettings, Settings};
 use crate::email_client::EmailClient;
 use crate::routes::{health_check, subscribe};
 use actix_web::dev::Server;
 use actix_web::{web, App, HttpServer};
-use secrecy::ExposeSecret;
+
 use sqlx::postgres::PgPoolOptions;
 use sqlx::PgPool;
 use std::net::TcpListener;
@@ -64,7 +64,7 @@ impl Application {
     }
 
     pub fn port(&self) -> u16 {
-        return self.port;
+        self.port
     }
 
     pub async fn run_until_stopped(self) -> Result<(), std::io::Error> {

@@ -1,5 +1,5 @@
 use once_cell::sync::Lazy;
-use sqlx::{PgPool, PgConnection, Connection, Executor};
+use sqlx::{Connection, Executor, PgConnection, PgPool};
 use uuid::Uuid;
 use zero2prod::configuration::{get_configuration, DatabaseSettings};
 use zero2prod::startup::{get_connection_pool, Application};
@@ -33,7 +33,7 @@ pub async fn spawn_app() -> TestApp {
     };
 
     configure_database(&configuration.database).await;
- 
+
     let application = Application::build(configuration.clone())
         .await
         .expect("Failed to build application");
